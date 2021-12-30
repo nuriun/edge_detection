@@ -26,26 +26,26 @@ class HomeViewController: UIViewController, CameraScannerViewOutputDelegate, Ima
         if self.isBeingPresented {
             cameraController = CameraScannerViewController()
             cameraController.delegate = self
-            if #available(iOS 13.0, *) {
-                cameraController.isModalInPresentation = true
-            }
-            
-            // Temp fix for https://github.com/WeTransfer/WeScan/issues/320
-            if #available(iOS 15, *) {
-                let appearance = UINavigationBarAppearance()
-                let navigationBar = UINavigationBar()
-                appearance.configureWithOpaqueBackground()
-                appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
-                appearance.backgroundColor = .systemBackground
-                navigationBar.standardAppearance = appearance;
-                UINavigationBar.appearance().scrollEdgeAppearance = appearance
-                
-                let appearanceTB = UITabBarAppearance()
-                appearanceTB.configureWithOpaqueBackground()
-                appearanceTB.backgroundColor = .systemBackground
-                UITabBar.appearance().standardAppearance = appearanceTB
-                UITabBar.appearance().scrollEdgeAppearance = appearanceTB
-            }
+//            if #available(iOS 13.0, *) {
+//                cameraController.isModalInPresentation = true
+//            }
+//
+//            // Temp fix for https://github.com/WeTransfer/WeScan/issues/320
+//            if #available(iOS 15, *) {
+//                let appearance = UINavigationBarAppearance()
+//                let navigationBar = UINavigationBar()
+//                appearance.configureWithOpaqueBackground()
+//                appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
+//                appearance.backgroundColor = .systemBackground
+//                navigationBar.standardAppearance = appearance;
+//                UINavigationBar.appearance().scrollEdgeAppearance = appearance
+//
+//                let appearanceTB = UITabBarAppearance()
+//                appearanceTB.configureWithOpaqueBackground()
+//                appearanceTB.backgroundColor = .systemBackground
+//                UITabBar.appearance().standardAppearance = appearanceTB
+//                UITabBar.appearance().scrollEdgeAppearance = appearanceTB
+//            }
             
             present(cameraController, animated: true) {
                 if let window = UIApplication.shared.keyWindow {
