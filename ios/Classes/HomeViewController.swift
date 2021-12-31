@@ -2,7 +2,7 @@ import WeScan
 import Flutter
 import Foundation
 
-class HomeViewController: UIViewController, CameraScannerViewOutputDelegate, ImageScannerControllerDelegate {
+class HomeViewController: UIViewController, ImageScannerControllerDelegate {
 
     var _result:FlutterResult?
     
