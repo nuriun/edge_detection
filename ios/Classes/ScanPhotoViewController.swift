@@ -26,9 +26,9 @@ class ScanPhotoViewController: UIViewController, ImageScannerControllerDelegate,
         guard let image = info[.originalImage] as? UIImage else { return }
         let scannerVC = ImageScannerController(image: image)
         scannerVC.imageScannerDelegate = self
-        if #available(iOS 13.0, *) {
-            scannerVC.isModalInPresentation = true
-        }
+//         if #available(iOS 13.0, *) {
+//             scannerVC.isModalInPresentation = true
+//         }
         present(scannerVC, animated: true)
     }
     
