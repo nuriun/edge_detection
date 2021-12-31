@@ -26,9 +26,9 @@ class HomeViewController: UIViewController, CameraScannerViewOutputDelegate, Ima
         if self.isBeingPresented {
             cameraController = CameraScannerViewController()
             cameraController.delegate = self
-//             if #available(iOS 13.0, *) {
-//                 cameraController.isModalInPresentation = true
-//             }
+            if #available(iOS 13.0, *) {
+                cameraController.isModalInPresentation = true
+            }
             
             // Temp fix for https://github.com/WeTransfer/WeScan/issues/320
             if #available(iOS 15, *) {
@@ -105,9 +105,9 @@ class HomeViewController: UIViewController, CameraScannerViewOutputDelegate, Ima
             
             let scanPhotoVC = ScanPhotoViewController()
             scanPhotoVC._result = _result
-            if #available(iOS 13.0, *) {
-                scanPhotoVC.isModalInPresentation = true
-            }
+//             if #available(iOS 13.0, *) {
+//                 scanPhotoVC.isModalInPresentation = true
+//             }
             window.rootViewController?.present(scanPhotoVC, animated: true)
         }
     }
