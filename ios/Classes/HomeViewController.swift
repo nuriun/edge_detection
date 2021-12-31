@@ -1,4 +1,4 @@
-import WeScan
+// import WeScan
 import Flutter
 import Foundation
 
