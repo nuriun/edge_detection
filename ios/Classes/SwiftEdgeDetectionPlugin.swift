@@ -1,6 +1,6 @@
 import Flutter
 import UIKit
-// import WeScan
+import WeScan
 
 public class SwiftEdgeDetectionPlugin: NSObject, FlutterPlugin, UIApplicationDelegate {
     
@@ -18,6 +18,7 @@ public class SwiftEdgeDetectionPlugin: NSObject, FlutterPlugin, UIApplicationDel
             if let viewController = UIApplication.shared.delegate?.window??.rootViewController as? FlutterViewController {
                 let destinationViewController = HomeViewController()
                 destinationViewController._result = result
+                destinationViewController.modalPresentationStyle = .fullScreen
                 viewController.present(destinationViewController,animated: true,completion: nil);
             }
         }

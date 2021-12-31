@@ -8,24 +8,37 @@ class HomeViewController: UIViewController, CameraScannerViewOutputDelegate, Ima
     }
     
     func captureImageSuccess(image: UIImage, withQuad quad: Quadrilateral?) {
-        cameraController?.dismiss(animated: true)
+//        cameraController?.dismiss(animated: true)
         
         hideButtons()
         let scannerVC = ImageScannerController(image: image, delegate: self)
-//         if #available(iOS 13.0, *) {
-//             scannerVC.isModalInPresentation = true
-//         }
+        scannerVC.modalPresentationStyle = .fullScreen
+        
+        if #available(iOS 13.0, *) {
+            scannerVC.navigationBar.tintColor = .label
+        } else {
+            scannerVC.navigationBar.tintColor = .black
+        }
+        
         present(scannerVC, animated: true)
     }
     
     
-    var cameraController: CameraScannerViewController!
+//    var cameraController: CameraScannerViewController!
     var _result:FlutterResult?
     
     override func viewDidAppear(_ animated: Bool) {
         if self.isBeingPresented {
-            cameraController = CameraScannerViewController()
-            cameraController.delegate = self
+            let scannerViewController = ImageScannerController(delegate: self)
+            scannerViewController.modalPresentationStyle = .fullScreen
+            
+            if #available(iOS 13.0, *) {
+                scannerViewController.navigationBar.tintColor = .label
+            } else {
+                scannerViewController.navigationBar.tintColor = .black
+            }
+            
+            present(scannerViewController, animated: true)
 //            if #available(iOS 13.0, *) {
 //                cameraController.isModalInPresentation = true
 //            }
@@ -47,14 +60,14 @@ class HomeViewController: UIViewController, CameraScannerViewOutputDelegate, Ima
 //                UITabBar.appearance().scrollEdgeAppearance = appearanceTB
 //            }
             
-            present(cameraController, animated: true) {
-                if let window = UIApplication.shared.keyWindow {
-                    window.addSubview(self.selectPhotoButton)
-                    window.addSubview(self.shutterButton)
-                    window.addSubview(self.cancelButton)
-                    self.setupConstraints()
-                }
-            }
+//            present(cameraController, animated: true) {
+//                if let window = UIApplication.shared.keyWindow {
+//                    window.addSubview(self.selectPhotoButton)
+//                    window.addSubview(self.shutterButton)
+//                    window.addSubview(self.cancelButton)
+//                    self.setupConstraints()
+//                }
+//            }
         }
     }
     
@@ -89,13 +102,13 @@ class HomeViewController: UIViewController, CameraScannerViewOutputDelegate, Ima
         hideButtons()
         _result!(nil)
         
-        cameraController?.dismiss(animated: true)
+//        cameraController?.dismiss(animated: true)
         dismiss(animated: true)
     }
     
     @objc private func captureImage(_ sender: UIButton) {
         shutterButton.isUserInteractionEnabled = false
-        cameraController?.capture()
+//        cameraController?.capture()
     }
     
     @objc func selectPhoto() {
@@ -118,47 +131,47 @@ class HomeViewController: UIViewController, CameraScannerViewOutputDelegate, Ima
         shutterButton.isHidden = true
     }
     
-    private func setupConstraints() {
-        var cancelButtonConstraints = [NSLayoutConstraint]()
-        var selectPhotoButtonConstraints = [NSLayoutConstraint]()
-        var shutterButtonConstraints = [
-            shutterButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            shutterButton.widthAnchor.constraint(equalToConstant: 65.0),
-            shutterButton.heightAnchor.constraint(equalToConstant: 65.0)
-        ]
-        
-        if #available(iOS 11.0, *) {
-            selectPhotoButtonConstraints = [
-                selectPhotoButton.widthAnchor.constraint(equalToConstant: 44.0),
-                selectPhotoButton.heightAnchor.constraint(equalToConstant: 44.0),
-                selectPhotoButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -24.0),
-                view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: selectPhotoButton.bottomAnchor, constant: (65.0 / 2) - 10.0)
-            ]
-            cancelButtonConstraints = [
-                cancelButton.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 24.0),
-                view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: cancelButton.bottomAnchor, constant: (65.0 / 2) - 10.0)
-            ]
-            
-            let shutterButtonBottomConstraint = view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: shutterButton.bottomAnchor, constant: 8.0)
-            shutterButtonConstraints.append(shutterButtonBottomConstraint)
-        } else {
-            selectPhotoButtonConstraints = [
-                selectPhotoButton.widthAnchor.constraint(equalToConstant: 44.0),
-                selectPhotoButton.heightAnchor.constraint(equalToConstant: 44.0),
-                selectPhotoButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -24.0),
-                view.bottomAnchor.constraint(equalTo: selectPhotoButton.bottomAnchor, constant: (65.0 / 2) - 10.0)
-            ]
-            cancelButtonConstraints = [
-                cancelButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 24.0),
-                view.bottomAnchor.constraint(equalTo: cancelButton.bottomAnchor, constant: (65.0 / 2) - 10.0)
-            ]
-            
-            let shutterButtonBottomConstraint = view.bottomAnchor.constraint(equalTo: shutterButton.bottomAnchor, constant: 8.0)
-            shutterButtonConstraints.append(shutterButtonBottomConstraint)
-        }
-        NSLayoutConstraint.activate(selectPhotoButtonConstraints + cancelButtonConstraints + shutterButtonConstraints)
-    }
-    
+//    private func setupConstraints() {
+//        var cancelButtonConstraints = [NSLayoutConstraint]()
+//        var selectPhotoButtonConstraints = [NSLayoutConstraint]()
+//        var shutterButtonConstraints = [
+//            shutterButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            shutterButton.widthAnchor.constraint(equalToConstant: 65.0),
+//            shutterButton.heightAnchor.constraint(equalToConstant: 65.0)
+//        ]
+//
+//        if #available(iOS 11.0, *) {
+//            selectPhotoButtonConstraints = [
+//                selectPhotoButton.widthAnchor.constraint(equalToConstant: 44.0),
+//                selectPhotoButton.heightAnchor.constraint(equalToConstant: 44.0),
+//                selectPhotoButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -24.0),
+//                view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: selectPhotoButton.bottomAnchor, constant: (65.0 / 2) - 10.0)
+//            ]
+//            cancelButtonConstraints = [
+//                cancelButton.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 24.0),
+//                view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: cancelButton.bottomAnchor, constant: (65.0 / 2) - 10.0)
+//            ]
+//
+//            let shutterButtonBottomConstraint = view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: shutterButton.bottomAnchor, constant: 8.0)
+//            shutterButtonConstraints.append(shutterButtonBottomConstraint)
+//        } else {
+//            selectPhotoButtonConstraints = [
+//                selectPhotoButton.widthAnchor.constraint(equalToConstant: 44.0),
+//                selectPhotoButton.heightAnchor.constraint(equalToConstant: 44.0),
+//                selectPhotoButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -24.0),
+//                view.bottomAnchor.constraint(equalTo: selectPhotoButton.bottomAnchor, constant: (65.0 / 2) - 10.0)
+//            ]
+//            cancelButtonConstraints = [
+//                cancelButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 24.0),
+//                view.bottomAnchor.constraint(equalTo: cancelButton.bottomAnchor, constant: (65.0 / 2) - 10.0)
+//            ]
+//
+//            let shutterButtonBottomConstraint = view.bottomAnchor.constraint(equalTo: shutterButton.bottomAnchor, constant: 8.0)
+//            shutterButtonConstraints.append(shutterButtonBottomConstraint)
+//        }
+//        NSLayoutConstraint.activate(selectPhotoButtonConstraints + cancelButtonConstraints + shutterButtonConstraints)
+//    }
+//
     func imageScannerController(_ scanner: ImageScannerController, didFailWithError error: Error) {
         print(error)
         _result!(nil)
