@@ -94,10 +94,10 @@ class ScanActivity : BaseActivity(), IScanView.Proxy {
             }
         }
 
-        gallery.setOnClickListener {
-            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-            ActivityCompat.startActivityForResult(this, gallery, 1, null);
-        };
+//        gallery.setOnClickListener {
+//            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+//            ActivityCompat.startActivityForResult(this, gallery, 1, null);
+//        };
     }
 
 
