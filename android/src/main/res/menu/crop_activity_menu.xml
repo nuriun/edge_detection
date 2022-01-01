@@ -1,9 +1,11 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_label"
         android:icon="@drawable/ic_crop"
         android:title="@string/crop"
+        android:tooltipText="@string/crop"
         app:showAsAction="always" />
 
     <item
