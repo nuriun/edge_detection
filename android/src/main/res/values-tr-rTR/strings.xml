@@ -11,7 +11,7 @@
     <string name="black">Siyah Beyaz</string>
     <string name="rotate">Döndür</string>
     <string name="reset">Sıfırla</string>
-    <string name="scan">Taranıyor</string>
+    <string name="scan">Tarama</string>
     <string name="next">İlerle</string>
     <string name="done">Tamam</string>
 </resources>
