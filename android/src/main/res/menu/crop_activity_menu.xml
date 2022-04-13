@@ -4,9 +4,9 @@
     <item
         android:id="@+id/action_label"
         android:icon="@drawable/ic_crop"
-        android:title="@string/crop"
+        android:title="@string/next"
         android:tooltipText="@string/crop"
-        app:showAsAction="always" />
+        app:showAsAction="always|withText" />
 
     <item
         android:id="@+id/rotation_image"

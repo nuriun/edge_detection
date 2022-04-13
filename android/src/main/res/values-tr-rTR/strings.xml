@@ -3,7 +3,7 @@
     <string name="app_name">EdgeDetection</string>
     <string name="camera_grant">Kamera izni gereklidir.</string>
     <string name="press_again_logout">Tekrar geri tuşuna basınız.</string>
-    <string name="crop">Kırp</string>
+    <string name="crop">Düzenle</string>
     <string name="save">Kaydet</string>
     <string name="export">Dışa Aktar</string>
     <string name="delete">Sil</string>
@@ -11,7 +11,7 @@
     <string name="black">Siyah Beyaz</string>
     <string name="rotate">Döndür</string>
     <string name="reset">Sıfırla</string>
-    <string name="scan">Tarama</string>
-    <string name="next">İlerle</string>
+    <string name="scan"></string>
+    <string name="next">Devam</string>
     <string name="done">Tamam</string>
 </resources>

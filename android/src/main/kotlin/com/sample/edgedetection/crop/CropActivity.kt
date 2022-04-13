@@ -75,7 +75,7 @@ class CropActivity : BaseActivity(), ICropView.Proxy {
 
         if (item.itemId == R.id.action_label) {
             Log.e(TAG, item.title.toString())
-            if (item.title == applicationContext.getString(R.string.crop)) {
+            if (item.title == applicationContext.getString(R.string.next)) {
                 Log.e(TAG, "Crop touched!")
                 mPresenter.crop()
                 changeMenuVisibility(true)
